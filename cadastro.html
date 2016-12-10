@@ -4,10 +4,15 @@
 		<meta charset="utf-8">
 		<title>Cadastro de Links</title>
 		<style type="text/css">
-			input {
+			.inputText {
 				position: absolute;
 				left: 180px;
 				width: 300px;
+			}
+
+			#enviar {
+				position: absolute;
+				left: 250px;
 			}
 		</style>
 	</head>
@@ -30,18 +35,29 @@
 
 		<br/>
 
-		<form id="cadastroLinks">
+		<form id="cadastroLinks" method="post" action="cadastro.php">
 
-			<h3>Cadastro de Site(Links)</h3>
+			<h3>Cadastro de Site (Links)</h3>
 
-			<label id="labelName">Nome do Site (ou Título): </label>
-			<input type="text" name="inputName" id="inputName" placeholder="Youtube, Video do Portas dos Fundos, etc..." />
+			<label id="labelName" >Nome do Site (ou Título): </label>
+			<input type="text" name="inputName" id="inputName" class="inputText" placeholder="Youtube, Video do Portas dos Fundos, etc..." />
 
 			<br/>
 			<br/>
 
-			<label id="labelUrl">Url (Link): </label>
-			<input type="text" name="inputUrl" id="inputUrl" placeholder="http://www.youtube.com.br" />
+			<label id="labelUrl" >Url (Link): </label>
+			<input type="text" name="inputUrl" id="inputUrl" class="inputText" placeholder="http://www.youtube.com.br" />
+
+			<br/>
+			<br/>
+
+			<label id="labelDescricao" >Descrição: </label>
+			<input type="text" name="inputDescricao" id="inputDescricao" class="inputText" placeholder="Ler as mudanças da att do PHP 7..." />
+
+			<br/>
+			<br/>
+
+			<input type="submit" name="enviar" id="enviar" />
 		</form>
 	</body>	
 </html>
