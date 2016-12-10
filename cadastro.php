@@ -3,7 +3,9 @@
 	//RL = repositorioLinks
 	
 	//função para fazer a conexão com o banco de dados
-	$conectaBDRL = mysql_connect("localhost:8080", "root", "") or print(mysql_error());
+	$conectaBDRL = mysqli_connect("localhost", "root", "") or print (mysql_error()); 
+	mysqli_select_db($conectaBDRL, "repositorioLinks") or print(mysql_error()); 
+	 
 	
 	if (isset($_POST['enviar'])) {
 		
@@ -11,6 +13,11 @@
 		$urlSite = $_POST['inputUrl'];
 		$descricaoSite = $_POST['inputDescricao'];
 
+		$sql = 'INSERT INTO cadastrolinks VALUES ("nome", "url", "descricao")';
+		$sql .= "('$nameSite', '$urlSite', '$descricaoSite')";
+		$resultado = mysqli_query($conectaBDRL,$sql);
+
+		echo "Link salvo com sucesso!";
 
 	}
 
