@@ -13,8 +13,7 @@
 		$urlSite = $_POST['inputUrl'];
 		$descricaoSite = $_POST['inputDescricao'];
 
-		$sql = 'INSERT INTO cadastrolinks VALUES ("nome", "url", "descricao")';
-		$sql .= "('$nameSite', '$urlSite', '$descricaoSite')";
+		$sql = 'INSERT INTO cadastrolinks ("nome", "url", "descricao") VALUES ("$nameSite", "$urlSite", "$descricaoSite")';
 		$resultado = mysqli_query($conectaBDRL,$sql);
 
 		echo "Link salvo com sucesso!";
