@@ -26,9 +26,9 @@
 		<!--Inicio da div para o menu lateral-->
 		<div id="menuLateral" style="width: 20%;">
 			<nav>
-				<label id="home"><a href="index.html">Home</a></label>
-				<br/>
-				<label id="home"><a href="cadastro.html">Cadastro de Links</a></label>
+				<label id="home"><a href="index.php">Home</a></label>
+				<label> | </label>
+				<label id="home"><a href="cadastro.php">Cadastro de Links</a></label>
 			</nav>
 		</div>
 			<!--fim da div para o menu lateral-->
@@ -61,3 +61,39 @@
 		</form>
 	</body>	
 </html>
+<?php 
+	
+	if (isset($_POST['enviar'])) {
+		
+
+		//conexão com o banco de dados
+		$host = "localhost";
+		$user = "root";
+		$pwd  = "";
+		$bd   = "repositoriolinks";
+		 
+		$conexao = mysqli_connect($host, $user, $pwd);
+		mysqli_select_db($conexao,$bd);
+		//conexão com o banco de dados
+		
+		//variaveis para pegar os dados do formulário	
+		$nameSite = $_POST['inputName'];
+		$urlSite = $_POST['inputUrl'];
+		$descricaoSite = $_POST['inputDescricao'];
+		//variaveis para pegar os dados do formulário
+
+		//inserção dos dados do formulario no banco de dados
+		$sql = "INSERT INTO cadastrolinks (nome, url, descricao) VALUES ('".$nameSite."', '".$urlSite."', '".$descricaoSite."')";
+		$cadastro = mysqli_query($conexao,$sql) or die(mysql_error());
+		//inserção dos dados do formulario no banco de dados
+
+		if ($cadastro) {
+			echo "<br/>Dados inseridos com sucesso!";
+		}else {
+			echo "<br/>Falha ao tentar inserir dados";
+		}
+
+
+	}	
+
+?>

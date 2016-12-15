@@ -1,0 +1,12 @@
+Para o funcionamento do repositorio de links será necessário a criação de um banco de dados.
+
+Para isso exportei um arquivo que fará automáticamente, porém se houver erros aqui estará as instruções para a criação da mesma.
+
+Nome da Banco de dados: repositoriolinks
+	
+	nome da tabelas: cadastrolinks
+		
+		nome das colunas: id
+				  nome
+				  url
+				  descricao
