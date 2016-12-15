@@ -88,9 +88,9 @@
 		//inserção dos dados do formulario no banco de dados
 
 		if ($cadastro) {
-			echo "<br/>Dados inseridos com sucesso!";
+			echo "<br/>Link salvo com sucesso!";
 		}else {
-			echo "<br/>Falha ao tentar inserir dados";
+			echo "<br/>Falha ao tentar salvar o link";
 		}
 
 

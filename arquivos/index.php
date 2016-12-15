@@ -99,3 +99,19 @@
 		<!--fim da div da tabela dos links salvos-->
 	</body>
 </html>
+
+<?php
+
+	
+	
+	//função para deletar links ja lidos
+	$sqlDelete = "DELETE FROM cadastrolinks WHERE ID = ''";
+	$deletando = mysqli_query($conexao,$sqlDelete);
+
+	if ($deletando) {
+		echo "<br/>Link deletado com sucesso!";
+	}else {
+		echo "<br/>Falha ao tentar deletar o link";
+	}
+
+?>
