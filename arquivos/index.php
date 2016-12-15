@@ -17,7 +17,6 @@
 	//organizar os links em array
 	$arrayDados = mysqli_fetch_assoc($buscando);
 
-
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -83,9 +82,18 @@
 
 								echo "<tr>";
 									echo "<td>".$arrayDados['nome']."</td>";
-									echo "<td><a>".$arrayDados['url']."</a></td>";
+									echo "<td>";
+										echo "<a href=".$arrayDados['url']." target='_blank'>";
+											echo $arrayDados['url'];
+										echo '</a>';
+									echo "</td>";
 									echo "<td>".$arrayDados['descricao']."</td>";
-									echo "<td>X</td>";
+									echo "<td>";
+										echo "<form method='post' action='index.php'>";
+											echo "<input type='hidden' name='inputId' value=".$arrayDados['id'].">";
+											echo "<input type='submit' name='deletar' id='deletar' value='x'/>";
+										echo "</form";
+									echo "</td>";
 								echo "</tr>";
 
 							}while ($arrayDados = mysqli_fetch_assoc($buscando));
@@ -102,16 +110,17 @@
 
 <?php
 
-	
-	
-	//função para deletar links ja lidos
-	$sqlDelete = "DELETE FROM cadastrolinks WHERE ID = ''";
-	$deletando = mysqli_query($conexao,$sqlDelete);
+	if (isset($_POST['deletar'])) {
 
-	if ($deletando) {
+		$idLink = $_POST['inputId'];
+
+		echo var_dump($idLink);
+
+		//função para deletar links ja lidos
+		$sqlDelete = "DELETE FROM cadastrolinks WHERE ID = '$idLink'";
+		$deletando = mysqli_query($conexao,$sqlDelete) or die('Falha ao apagar o link');
+
 		echo "<br/>Link deletado com sucesso!";
-	}else {
-		echo "<br/>Falha ao tentar deletar o link";
 	}
 
 ?>
