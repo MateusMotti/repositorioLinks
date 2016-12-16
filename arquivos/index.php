@@ -38,6 +38,9 @@
 				border: 1px solid;
 				text-align: center;
 			}
+			#palavraChave {
+				width: 250px;
+			}
 		</style>
 	</head>
 	<body>
@@ -53,6 +56,13 @@
 				<label id="home"><a href="index.php">Home</a></label>
 				<label> | </label>
 				<label id="home"><a href="cadastro.php">Cadastro de Links</a></label>
+				<br/>
+				<br/>
+				<!--Outra gambiarra (desculpe por elas kkkk) para buscar os links ja cadastrados por nome ou título-->
+				<form method="get" action="busca.php" >
+					<input type="text" name="palavraChave" id="palavraChave" placeholder="Busque seu link por nome ou título" />
+					<input type="submit" name="search" id="search" value="Buscar" />
+				</form>
 			</nav>
 		</div>
 		<!--fim da div para o menu lateral-->
@@ -64,7 +74,7 @@
 			<div id="tabelaLinks">
 				<table>
 					<tr>
-						<th>Nome do Site</th>
+						<th>Nome (Título) do Site</th>
 						<th>Url</th>
 						<th>Descrição</th>
 						<th>Deletar</th>
@@ -91,7 +101,7 @@
 									echo "<td>".$arrayDados['descricao']."</td>";
 									echo "<td>";
 					?>				
-										<form method="post" action="index.php">
+										<form method="post" action="index.php" >
 											<!--gambiarra para pegar o ID do link para ser efetuado a exclusão-->
 											<?php echo "<input type='hidden' name='inputId' value=".$arrayDados["id"]." />"?>
 											<input type="submit" name="deletar" id="deletar" value="x" />
@@ -114,8 +124,7 @@
 
 <?php
 	
-	
-
+	//verifica se os id para o link ser deletado foi pego
 	if (isset($_POST['deletar'])) {
 
 		$idLink = $_POST['inputId'];
