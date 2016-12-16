@@ -78,6 +78,7 @@
 
 						if ($totalDados > 0) {
 
+							//organiza e coloca todos os dados cadastrados em uma tabela
 							do {
 
 								echo "<tr>";
@@ -89,10 +90,13 @@
 									echo "</td>";
 									echo "<td>".$arrayDados['descricao']."</td>";
 									echo "<td>";
-										echo "<form method='post' action='index.php'>";
-											echo "<input type='hidden' name='inputId' value=".$arrayDados['id'].">";
-											echo "<input type='submit' name='deletar' id='deletar' value='x'/>";
-										echo "</form";
+					?>				
+										<form method="post" action="index.php">
+											<!--gambiarra para pegar o ID do link para ser efetuado a exclusão-->
+											<?php echo "<input type='hidden' name='inputId' value=".$arrayDados["id"]." />"?>
+											<input type="submit" name="deletar" id="deletar" value="x" />
+										</form>
+					<?php					
 									echo "</td>";
 								echo "</tr>";
 
@@ -109,18 +113,24 @@
 </html>
 
 <?php
+	
+	
 
 	if (isset($_POST['deletar'])) {
 
 		$idLink = $_POST['inputId'];
 
-		echo var_dump($idLink);
-
 		//função para deletar links ja lidos
-		$sqlDelete = "DELETE FROM cadastrolinks WHERE ID = '$idLink'";
-		$deletando = mysqli_query($conexao,$sqlDelete) or die('Falha ao apagar o link');
+		$sqlDelete = "DELETE FROM cadastrolinks WHERE ID =".$idLink;
+		$deletando = mysqli_query($conexao,$sqlDelete) or die(mysql_error());
 
-		echo "<br/>Link deletado com sucesso!";
+		//verificar se o link foi apagado com sucesso
+		if ($deletando) {
+			echo "Link removido com sucesso.";
+		}else {
+			echo "Falha ao tentar apagar o link. ";
+		}
+
 	}
 
 ?>
