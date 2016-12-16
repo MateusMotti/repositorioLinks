@@ -36,12 +36,14 @@
 
 				echo "<li>";
 					echo "<p>".$nome."</p>";
-					echo "<a href='".$url."'>".$url."</a>";
+					echo "<a href='".$url."' target='_blank'>".$url."</a>";
 					echo "<p>".$descricao."</p>";
 				echo "</li>";	
 
 			}
 
 		echo "</ul>";
+		echo "<br/>";
+		echo "<a href='index.php'>voltar para home</a>";
 	}
 ?>
